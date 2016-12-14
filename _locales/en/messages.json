@@ -1,0 +1,29 @@
+{
+    "extensionName": {
+        "message": "Open In DualView++",
+        "description": "Name of the extension."
+    },
+
+    "extensionDescription": {
+        "message": "Allows opening images in DualView++.",
+        "description": "Description of the add-on."
+    },
+
+    "contextMenuOpenSingleDualView": {
+        "message": "Open Image in DualView++",
+        "description": "Title of context menu item that sends a single image to DualView++."
+    },
+
+    "contextMenuOpenPageDualView": {
+        "message": "Open Page in DualView++",
+        "description": "Title of context menu item that sends the whole page to DualView++."
+    },
+
+    "contextMenuOpenLinkDualView": {
+        "message": "Open Link in DualView++",
+        "description": "Title of context menu item that sends a link to DualView++."
+    }
+
+    
+
+}

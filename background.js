@@ -42,22 +42,30 @@ browser.contextMenus.onClicked.addListener(function(info, tab) {
     case "download-one-image":
         console.log("One image: " + info.srcUrl);
 
+        var sending = browser.runtime.sendNativeMessage(
+            "dualview_bridge",
+            "--dl-image;" + info.srcUrl);
+        sending.then(onResponse, onError);
         
         break;
         
     case "download-whole-page":
         console.log("Download whole page clicked: " + info.pageUrl);
         
-        
         var sending = browser.runtime.sendNativeMessage(
             "dualview_bridge",
-            "page here: ");
+            "--dl-page;" + info.pageUrl);
         sending.then(onResponse, onError);
         
         break;
         
     case "download-linked-page":
         console.log("Download link clicked: " + info.linkUrl);
+
+        var sending = browser.runtime.sendNativeMessage(
+            "dualview_bridge",
+            "--dl-auto;" + info.linkUrl);
+        sending.then(onResponse, onError);
         
         break;
     }

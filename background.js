@@ -1,7 +1,7 @@
 
 // Native callbacks //
 function onResponse(response) {
-  console.log("Received " + response.content);
+  console.log("Received response from bridge: " + response.content);
 }
 
 function onError(error) {
@@ -40,11 +40,11 @@ browser.contextMenus.create({
 browser.contextMenus.onClicked.addListener(function(info, tab) {
     switch (info.menuItemId) {
     case "download-one-image":
-        console.log("One image: " + info.srcUrl);
+        console.log("One image: " + info.srcUrl + " referrer: " + tab.url);
 
         var sending = browser.runtime.sendNativeMessage(
             "dualview_bridge",
-            "--dl-image;" + info.srcUrl);
+            "--dl-image;" + info.srcUrl + ";--dl-referrer;" + tab.url);
         sending.then(onResponse, onError);
         
         break;
@@ -60,11 +60,11 @@ browser.contextMenus.onClicked.addListener(function(info, tab) {
         break;
         
     case "download-linked-page":
-        console.log("Download link clicked: " + info.linkUrl);
+        console.log("Download link clicked: " + info.linkUrl + " referrer: " + tab.url);
 
         var sending = browser.runtime.sendNativeMessage(
             "dualview_bridge",
-            "--dl-auto;" + info.linkUrl);
+            "--dl-auto;" + info.linkUrl + ";--dl-referrer;" + tab.url);
         sending.then(onResponse, onError);
         
         break;

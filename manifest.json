@@ -12,7 +12,8 @@
     
     "permissions": [
         "contextMenus",
-        "nativeMessaging"
+        "nativeMessaging",
+        "tabs"
     ],
     
     "icons": {

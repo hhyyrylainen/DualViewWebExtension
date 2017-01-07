@@ -13,7 +13,6 @@
     "permissions": [
         "contextMenus",
         "nativeMessaging"
-        //"activeTab"
     ],
     
     "icons": {
@@ -24,9 +23,8 @@
 
     "applications": {
         "gecko": {
-            "id": "dualview.webextension@boostslair.com",
-            "strict_min_version": "45"
-            //"update_url": "https://example.com/updates.json"
+            "id": "dualviewpp.webextension@boostslair.com",
+            "strict_min_version": "45.0"
         }
     }
 }

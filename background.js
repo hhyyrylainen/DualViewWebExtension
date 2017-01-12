@@ -1,19 +1,16 @@
 
 // Native callbacks //
 function onResponse(response) {
-  console.log("Received response from bridge: " + response.content);
+  console.log("Successfully received response from DualView++ Bridge: " + response.content);
 }
 
 function onError(error) {
-  console.log(`Error: ${error}`);
+  console.log(`Error communicating with DualView++ Bridge: ${error}`);
 }
 
-// A basic log callback for the context menu items
 function onCreated(n) {
-  if (browser.runtime.lastError) {
-    console.log(`Error: ${browser.runtime.lastError}`);
-  } else {
-    console.log("Item created successfully");
+  if(browser.runtime.lastError){
+    console.log(`Error registering DualView Context Menu entry: ${browser.runtime.lastError}`);
   }
 }
 
@@ -40,8 +37,7 @@ browser.contextMenus.create({
 browser.contextMenus.onClicked.addListener(function(info, tab) {
     switch (info.menuItemId) {
     case "download-one-image":
-        console.log("One image: " + info.srcUrl + " referrer: " + tab.url);
-
+        
         var sending = browser.runtime.sendNativeMessage(
             "dualview_bridge",
             "--dl-image;" + info.srcUrl + ";--dl-referrer;" + tab.url);
@@ -50,7 +46,6 @@ browser.contextMenus.onClicked.addListener(function(info, tab) {
         break;
         
     case "download-whole-page":
-        console.log("Download whole page clicked: " + info.pageUrl);
         
         var sending = browser.runtime.sendNativeMessage(
             "dualview_bridge",
@@ -60,7 +55,6 @@ browser.contextMenus.onClicked.addListener(function(info, tab) {
         break;
         
     case "download-linked-page":
-        console.log("Download link clicked: " + info.linkUrl + " referrer: " + tab.url);
 
         var sending = browser.runtime.sendNativeMessage(
             "dualview_bridge",

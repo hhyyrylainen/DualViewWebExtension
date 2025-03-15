@@ -3,7 +3,7 @@
     "manifest_version": 2,
     "name": "Open In DualView++",
     "description": "Allows opening images in DualView++.",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "default_locale": "en",
     
     "background": {
@@ -24,8 +24,8 @@
 
     "applications": {
         "gecko": {
-            "id": "dualview.webextension@boostslair.com",
-            "strict_min_version": "45.0"
+            "id": "dualview.webextension.self-hosted@boostslair.com",
+            "strict_min_version": "58.0"
         }
     }
 }
